@@ -1,6 +1,5 @@
 const divide = require('./divide');
 
-// HELPER FUNCTION TO MATCH WORKER WITH JOBS and CALLS CALLBACK ON EACH JOB
 const bundleTasks = (task, jobsPerBundle) => {
   const bundle = [];
   for (let i = 1; i <= jobsPerBundle; i++) {

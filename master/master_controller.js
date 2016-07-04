@@ -1,3 +1,24 @@
+// Handle all requests to master.js server
+
+/*
+CURRENT MVP IMPLEMENTATION SPECIFICATIONS
+--All work is handled in the webServer function
+--Server reponds when all tasks have been completed
+--All tasks live within one request function
+--Ideal situation: EC2 instances are spun up every time a request is needed
+--NOT DESIGNED FOR SCALE
+--Error handling - Redistribute work to workers that have gone offline
+*/
+
+// ASSUMPTIONS
+const tasksPerJob = 1; // Arbitrary number of actions per job
+// TODO - Fill this in
+const webServerUrl = process.env.PROTOCOL + process.env.WEB_PORT_8000_TCP_ADDR + ':' + process.env.WEB_PORT_8000_TCP_PORT;
+
+// Dependencies
+const request = require('request');
+
+// Modules
 const Queue = require('../helper/queue');
 const { addAllJobsToQueue } = require('../helper/helpers');
 const util = require('../helper/utils');
