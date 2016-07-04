@@ -9,13 +9,4 @@ const bundleTasks = (tasks, jobsPerBundle) => {
   return bundle;
 };
 
-const createPrimeJobs = (jobCount) => {
-  const result = [];
-  for (let i = 0; i < jobCount; i++) {
-    // Create arbitrary prime numbers
-    result.push(Math.floor(Math.random() * 1000));
-  }
-  return result;
-};
-
-module.exports = { bundleTasks, createPrimeJobs };
+module.exports = { bundleTasks };
