@@ -11,12 +11,7 @@ CURRENT MVP IMPLEMENTATION SPECIFICATIONS
 */
 
 // ASSUMPTIONS
-const tasksPerJob = 1; // Arbitrary number of actions per job
-// TODO - Fill this in
-const webServerUrl = process.env.PROTOCOL + process.env.WEB_PORT_8000_TCP_ADDR + ':' + process.env.WEB_PORT_8000_TCP_PORT;
-
-// Dependencies
-const request = require('request');
+const tasksPerJob = 5; // Arbitrary number of actions per job
 
 // Modules
 const Queue = require('../helper/queue');
