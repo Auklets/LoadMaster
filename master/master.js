@@ -31,9 +31,6 @@ app.post('/api/master', masterController.handleJobFromWebServer);
 // Handle POST request for jobs from the worker
 app.post('/api/requestJob', masterController.requestJob);
 
-// Handle completion POST request from the worker
-app.post('/api/complete', masterController.complete);
-
 // Server listens at specified port
 app.listen(app.get('port'), () => {
   console.log(`Master server listening to port ${app.get('port')}`);
@@ -46,7 +43,6 @@ if (process.env.NODE_ENV === 'development') {
     masterName: 'master1',
     scenarioID: 1,
     scenarioName: 'test1',
-    id_user: 2,
     spawnsCount: 20,
     targetURL: 'http://localhost:3000',
     script: "get /",
@@ -61,7 +57,6 @@ if (process.env.NODE_ENV === 'development') {
     workers: 2,
     scenarioID: 1,
     scenarioName: 'test1',
-    id_user: 1,
     spawnsCount: 10,
     targetURL: 'http://45.55.183.145/',
     script: "get('/');",
