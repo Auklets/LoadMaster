@@ -23,23 +23,12 @@ describe('Master Server', () => {
 
   describe('POST/api/requestJob', () => {
     // Should respond with 200 status code
-    it('should return a 200 status code and return JSON', done => {
+    it('should return a 200 status code', done => {
       request(app)
         .post('/api/requestJob')
         .expect(200)
         .end(done)
     });
   });
-
-  describe('POST /api/complete', () => {
-    // Should respond with 200 status code
-    it('should respond with 200 status code', done => {
-      request(app)
-        .post('/api/complete')
-        .expect(200)
-        .end(done)
-    });
-  });
-
 });
     
