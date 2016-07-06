@@ -6,7 +6,7 @@ const sinon = require('sinon');
 const request = require('supertest');
 
 // MODULES
-const app = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+const app = `${process.env.PROTOCOL}${process.env.MASTER_HOST}:${process.env.MASTER_PORT}`;
 const masterHandler = require('../master/master_controller.js');
 
 // MASTER
