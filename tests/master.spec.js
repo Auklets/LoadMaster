@@ -6,7 +6,7 @@ const sinon = require('sinon');
 const request = require('supertest');
 
 // MODULES
-const app = `${process.env.PROTOCOL}${process.env.HOST}:${process.env.PORT}`;
+const app = `${process.env.PROTOCOL}${process.env.MASTER_HOST}:${process.env.MASTER_PORT}`;
 const masterHandler = require('../master/master_controller.js');
 
 // MASTER
@@ -23,23 +23,12 @@ describe('Master Server', () => {
 
   describe('POST/api/requestJob', () => {
     // Should respond with 200 status code
-    it('should return a 200 status code and return JSON', done => {
+    it('should return a 200 status code', done => {
       request(app)
         .post('/api/requestJob')
         .expect(200)
         .end(done)
     });
   });
-
-  describe('POST /api/complete', () => {
-    // Should respond with 200 status code
-    it('should respond with 200 status code', done => {
-      request(app)
-        .post('/api/complete')
-        .expect(200)
-        .end(done)
-    });
-  });
-
 });
     
