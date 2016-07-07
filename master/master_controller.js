@@ -58,7 +58,7 @@ const requestJob = (req, res) => {
 };
 
 const shutdownWorkers = (req, res) => {
-  status.workerList.forEach(function(workerName) {
+  status.workerList.forEach((workerName) => {
     console.log('shutting down', workerName);
     util.removeContainer(dockerConnection, workerName);
   });

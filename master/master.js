@@ -16,6 +16,10 @@ app.post('/api/master', masterController.handleJobFromWebServer);
 app.post('/api/requestJob', masterController.requestJob);
 app.post('/api/complete', masterController.shutdownWorkers);
 
+app.get('/*', (req, res) => {
+  res.send('get req received');
+});
+
 app.listen(process.env.MASTER_PORT, () => {
   console.log(`Master server listening to port ${process.env.MASTER_PORT}`);
 });

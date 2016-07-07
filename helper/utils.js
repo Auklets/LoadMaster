@@ -33,4 +33,16 @@ const createContainer = (dockerConnection, masterName, imageName, containerName)
   );
 };
 
-module.exports = { sendJSON, createContainer };
+const removeContainer = (dockerConnection, containerName) => {
+  const container = dockerConnection.getContainer(containerName);
+  container.remove((err, data) => {
+    if (err) {
+      console.log('error while removing container', err);
+    } else {
+      console.log('successfully removed', containerName);
+      console.log('data', data);
+    }
+  });
+};
+
+module.exports = { sendJSON, createContainer, removeContainer };
