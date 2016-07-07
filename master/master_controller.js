@@ -38,7 +38,7 @@ const handleJobFromWebServer = (req, res) => {
     const workerName = task.masterName.concat('worker'.concat(status.workerCount));
     status.workerList.push(workerName);
     console.log(`creating ${workerName}`);
-    const imageName = 'cshg/loadworker:' + process.env.NODE_ENV;
+    const imageName = 'cshg/loadworker:swarm';
     util.createContainer(dockerConnection, task.masterName, imageName, workerName);
   }
   if (res) {
