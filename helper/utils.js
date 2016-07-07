@@ -35,6 +35,14 @@ const createContainer = (dockerConnection, masterName, imageName, containerName)
 
 const removeContainer = (dockerConnection, containerName) => {
   const container = dockerConnection.getContainer(containerName);
+  container.stop((err, data) => {
+    if (err) {
+      console.log('error while stopping container', err);
+    } else {
+      console.log('successfully stopped', containerName);
+      console.log('data', data);
+    }
+  });
   container.remove((err, data) => {
     if (err) {
       console.log('error while removing container', err);
