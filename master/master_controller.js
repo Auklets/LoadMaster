@@ -1,28 +1,14 @@
-// Handle all requests to master.js server
-
-/*
-CURRENT MVP IMPLEMENTATION SPECIFICATIONS
---All work is handled in the webServer function
---Server reponds when all tasks have been completed
---All tasks live within one request function
---Ideal situation: EC2 instances are spun up every time a request is needed
---NOT DESIGNED FOR SCALE
---Error handling - Redistribute work to workers that have gone offline
-*/
-
-// ASSUMPTIONS
-const tasksPerJob = 5; // Arbitrary number of actions per job
-
-// Modules
 const Queue = require('../helper/queue');
 const { addAllJobsToQueue } = require('../helper/helpers');
 const util = require('../helper/utils');
 const dockerConnection = require('../config/docker-config');
 
 // Global Variables
+const tasksPerJob = 5; // Arbitrary number of actions per job
 const jobQueue = new Queue();
 const status = {
   workerCount: 0,
+  workerList: [],
 };
 let totalJobs = 0;
 
@@ -50,6 +36,7 @@ const handleJobFromWebServer = (req, res) => {
   for (let j = 1; j <= workers; j++) {
     status.workerCount = j;
     const workerName = task.masterName.concat('worker'.concat(status.workerCount));
+    status.workerList.push(workerName);
     console.log(`creating ${workerName}`);
     const imageName = 'cshg/loadworker:' + process.env.NODE_ENV;
     util.createContainer(dockerConnection, task.masterName, imageName, workerName);
@@ -70,5 +57,13 @@ const requestJob = (req, res) => {
   }
 };
 
+const shutdownWorkers = (req, res) => {
+  setTimeout(() => {
+    status.workerList.forEach((workerName) => {
+      console.log('shutting down', workerName);
+      util.removeContainer(dockerConnection, workerName);
+    });
+  }, 4000);
+};
 
-module.exports = { handleJobFromWebServer, requestJob };
+module.exports = { handleJobFromWebServer, requestJob, shutdownWorkers };
