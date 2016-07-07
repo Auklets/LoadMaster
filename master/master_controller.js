@@ -58,10 +58,12 @@ const requestJob = (req, res) => {
 };
 
 const shutdownWorkers = (req, res) => {
-  status.workerList.forEach((workerName) => {
-    console.log('shutting down', workerName);
-    util.removeContainer(dockerConnection, workerName);
-  });
+  setTimeout(() => {
+    status.workerList.forEach((workerName) => {
+      console.log('shutting down', workerName);
+      util.removeContainer(dockerConnection, workerName);
+    });
+  }, 4000);
 };
 
 module.exports = { handleJobFromWebServer, requestJob, shutdownWorkers };
