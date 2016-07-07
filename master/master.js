@@ -17,7 +17,7 @@ app.post('/api/requestJob', masterController.requestJob);
 app.post('/api/complete', masterController.shutdownWorkers);
 
 app.get('/*', (req, res) => {
-  res.send('get req received');
+  res.send('error: route not in use');
 });
 
 app.listen(process.env.MASTER_PORT, () => {
