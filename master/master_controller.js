@@ -63,7 +63,7 @@ const shutdownWorkers = (req, res) => {
       console.log('shutting down', workerName);
       util.removeContainer(dockerConnection, workerName);
     });
-  }, 4000);
+  }, 10000);
 };
 
 module.exports = { handleJobFromWebServer, requestJob, shutdownWorkers };
