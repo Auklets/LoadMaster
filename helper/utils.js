@@ -43,14 +43,16 @@ const removeContainer = (dockerConnection, containerName) => {
       console.log('data', data);
     }
   });
-  container.remove((err, data) => {
-    if (err) {
-      console.log('error while removing container', err);
-    } else {
-      console.log('successfully removed', containerName);
-      console.log('data', data);
-    }
-  });
+  setTimeout(() => {
+    container.remove((err, data) => {
+      if (err) {
+        console.log('error while removing container', err);
+      } else {
+        console.log('successfully removed', containerName);
+        console.log('data', data);
+      }
+    });
+  }, 5000);
 };
 
 module.exports = { sendJSON, createContainer, removeContainer };
