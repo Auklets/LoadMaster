@@ -10,12 +10,12 @@ const environment = require('dotenv');
 const masterController = require('./master_controller.js');
 
 const app = express();
-app.set('port', port);
 
 app.use(bodyParser.json());
 
 app.post('/api/master', masterController.handleJobFromWebServer);
 app.post('/api/requestJob', masterController.requestJob);
+app.post('/api/complete', masterController.shutdownWorkers);
 
 app.listen(process.env.MASTER_PORT, () => {
   console.log(`Master server listening to port ${process.env.MASTER_PORT}`);
