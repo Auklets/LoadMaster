@@ -23,6 +23,7 @@ const dockerConnection = require('../config/docker-config');
 const jobQueue = new Queue();
 const status = {
   workerCount: 0,
+  workerList: [],
 };
 let totalJobs = 0;
 
@@ -50,6 +51,7 @@ const handleJobFromWebServer = (req, res) => {
   for (let j = 1; j <= workers; j++) {
     status.workerCount = j;
     const workerName = task.masterName.concat('worker'.concat(status.workerCount));
+    status.workerList.push(workerName);
     console.log(`creating ${workerName}`);
     const imageName = 'cshg/loadworker:' + process.env.NODE_ENV;
     util.createContainer(dockerConnection, task.masterName, imageName, workerName);
