@@ -1,12 +1,11 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const environment = require('dotenv');
 if (process.env.NODE_ENV === 'development') {
   environment.config({ path: './env/development.env' });
 } else if (process.env.NODE_ENV === 'production') {
   environment.config({ path: '../env/production.env' });
 }
-
-const express = require('express');
-const bodyParser = require('body-parser');
-const environment = require('dotenv');
 const masterController = require('./master_controller.js');
 
 const app = express();
@@ -26,10 +25,11 @@ if (process.env.NODE_ENV === 'development') {
   const request = {};
   request.body = {
     masterName: 'master1',
+    workers: 2,
     scenarioID: 1,
     scenarioName: 'test1',
     spawnsCount: 20,
-    targetURL: 'http://localhost:3000',
+    targetURL: 'http://localhost:2000',
     script: "get /",
   };
   masterController.handleJobFromWebServer(request);
