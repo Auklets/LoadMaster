@@ -40,15 +40,13 @@ const removeContainer = (dockerConnection, containerName) => {
       console.log('error while stopping container', err);
     } else {
       console.log('successfully stopped', containerName);
-      console.log('data', data);
-    }
-  });
-  container.remove((err, data) => {
-    if (err) {
-      console.log('error while removing container', err);
-    } else {
-      console.log('successfully removed', containerName);
-      console.log('data', data);
+      container.remove((err, data) => {
+        if (err) {
+          console.log('error while removing container', err);
+        } else {
+          console.log('successfully removed', containerName);
+        }
+      });
     }
   });
 };

@@ -63,6 +63,7 @@ const shutdownWorkers = (req, res) => {
       console.log('shutting down', workerName);
       util.removeContainer(dockerConnection, workerName);
     });
+    status.workerList = [];
   }, 10000);
 };
 
