@@ -1,17 +1,7 @@
 // Handle all requests to master.js server
 
-/*
-CURRENT MVP IMPLEMENTATION SPECIFICATIONS
---All work is handled in the webServer function
---Server reponds when all tasks have been completed
---All tasks live within one request function
---Ideal situation: EC2 instances are spun up every time a request is needed
---NOT DESIGNED FOR SCALE
---Error handling - Redistribute work to workers that have gone offline
-*/
-
 // ASSUMPTIONS
-const tasksPerJob = 5; // Arbitrary number of actions per job
+const tasksPerJob = 5; // Number of actions per job
 
 // Modules
 const Queue = require('../helper/queue');
