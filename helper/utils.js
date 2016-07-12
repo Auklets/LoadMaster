@@ -10,7 +10,7 @@ const createContainer = (dockerConnection, masterName, imageName, containerName)
       name: containerName,
       HostConfig: {
         Binds: ["/env:/env"],
-        Links: [masterName + ":masterhost"],
+        Links: ["mysql:mysql", masterName + ":masterhost"],
       },
     },
     (connectErr, container) => {
