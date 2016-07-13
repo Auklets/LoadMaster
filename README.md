@@ -2,7 +2,16 @@
 ---
 
 ## Description
-> Load Master is the load distributing component of the Load Effect application. This server receives requests from the Load Effect web server and spins up docker instances based on the request specifications. The Load Master features a custom-built queue which will distribute work through the /api/requestJob end point, job de-packaging capabilities, etc.
+Load Master is the load distributing component of the Load Effect application. This server receives requests from the Load Effect web server and spins up docker instances based on the request specifications. The Load Master features a custom-built job queue which will distribute work through the /api/requestJob end point, job de-packaging capabilities, etc. Worker servers interact with the Master server by asking for additional additional packets of work. If no more work is available, masters will shut down workers.
+
+### Features
+  - Job Queue
+  - Work splitting algorithm
+  - Create and remove Docker containers
+
+### Master Server Architecture
+
+![image](https://cloud.githubusercontent.com/assets/17420728/16813166/3f0f6464-48e5-11e6-90f0-0133db6e40ce.png)
 
 ## Table of Contents
 
