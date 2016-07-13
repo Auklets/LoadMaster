@@ -1,8 +1,5 @@
 // Handle all requests to master.js server
 
-// ASSUMPTIONS
-const tasksPerJob = 5; // Number of actions per job
-
 // Modules
 const Queue = require('../helper/queue');
 const { addAllJobsToQueue } = require('../helper/helpers');
