@@ -1,5 +1,3 @@
-// Implement Queue including Create Queue, Add to Queue, Remove from Queue
-
 // Implementation of Basic Queue
 const Queue = class Queue {
   constructor() {

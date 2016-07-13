@@ -1,3 +1,6 @@
+// Handle all requests to master.js server
+
+// Modules
 const Queue = require('../helper/queue');
 const { addAllJobsToQueue } = require('../helper/helpers');
 const util = require('../helper/utils');
