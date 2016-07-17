@@ -1,4 +1,4 @@
-# Load Effect
+# LoadMaster
 ---
 
 ## Description
